@@ -7,31 +7,14 @@ from os import getenv, environ
 
 class GoogleAPI:
     """# An Interface to Google's Vision API"""
+
     def __init__(self):
         """function that prepares the GoogleAPI to handle requests from the
         endpoints.
-
-        initially, this function will be looking for the environment variable
-        GOOGLE_CREDS that hold the content of the credential file from the
-        Google API dashboard, as long as this environment variable is set this
-        the function will write a temporary file to /tmp/google.json with that
-        content the will set a new variable GOOGLE_APPLICATION_CREDENTIALS
-        which is used by ImageAnnotatorClient to authorize the google API library
         """
-        # TODO: Refactor into separate function
-        if getenv("GOOGLE_CREDS") is not None:
-            with open("/tmp/google.json", "wt") as fp:
-                # write file to /tmp containing all of the cred info
-                fp.write(getenv("GOOGLE_CREDS"))
-                # make extra sure that the changes get flushed on to the disk
-                fp.flush()
-                # explicitly close file stream
-                fp.close()
-            # update the environment with the environment variable that google
-            # sdk is looking for
-            environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/google.json"
-        else:
-            raise RuntimeError("Missing Google Credentials, Exiting app")
+        environ[
+            "GOOGLE_APPLICATION_CREDENTIALS"
+        ] = "usr/src/app/tmp/google.json"
 
         # init the client for use by the functions
         self.client = vision.ImageAnnotatorClient()
@@ -138,4 +121,5 @@ class GoogleAPI:
 class NoTextFoundException(Exception):
     """An Exception that occurs when Google Vision API
     finds no text data in the image"""
+
     pass

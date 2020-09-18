@@ -11,3 +11,5 @@ RUN pip install -r requirements.txt
 
 # add app
 COPY . .
+
+RUN echo $GOOGLE_CREDS > ./tmp/google.json
