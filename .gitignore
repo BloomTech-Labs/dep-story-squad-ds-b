@@ -9,3 +9,7 @@ __pycache__
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# adding a data folder to keep photos and csv's
+data
+!data/.gitkeep
