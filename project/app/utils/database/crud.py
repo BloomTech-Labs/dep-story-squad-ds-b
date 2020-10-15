@@ -4,7 +4,7 @@ from sqlalchemy import and_
 from . import models, schemas
 
 
-def create_submission(db: Session, mold: schemas.SubmissionModel):
+def create_submission(db: Session, mold: schemas.Submission):
     db_submission = models.Submission(mold.SubmissionID, mold.CohortID,
                                       mold.StoryID, mold.StoryLength,
                                       mold.AverageWordLength,

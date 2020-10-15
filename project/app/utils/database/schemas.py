@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class SubmissionModel(BaseModel):
+class Submission(BaseModel):
     """Pydantic model used to define the schema of Submission
     SQLAlchemy Model"""
     SubmissionID: int
