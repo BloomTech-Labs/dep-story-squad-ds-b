@@ -4,6 +4,10 @@ from .database import Base
 
 
 class Submission(Base):
+    """SQLAlchemy model to represent data that is stored in database
+    for more information see:
+    https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-database-models
+    """
     __tablename__ = "submissions"
     SubmissionID: Column("sub_id", Integer, primary_key=True, index=True)
     CohortID: Column("cohort_id", Integer, nullable=True)

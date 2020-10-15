@@ -5,7 +5,10 @@ from pydantic import BaseModel
 
 class Submission(BaseModel):
     """Pydantic model used to define the schema of Submission
-    SQLAlchemy Model"""
+    SQLAlchemy Model
+    for more information about how these models are setup see:
+    https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-pydantic-models
+    """
     SubmissionID: int
     CohortID: Optional[int]
     StoryID: int
