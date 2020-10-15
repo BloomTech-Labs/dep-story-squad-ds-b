@@ -1,7 +1,12 @@
-from sqlalchemy import Column, Integer, Float
+from sqlalchemy import Column, Integer, Float, ForeignKey
 
 from .database import Base
 
+
+class Child(Base):
+    __tablename__ = "children"
+    ChildID: Column("child_id", Integer, primaray_key=True, index=True)
+    GradeLevel: Column("grade_level", Integer, nullable=False)
 
 class Submission(Base):
     """SQLAlchemy model to represent data that is stored in database
@@ -10,7 +15,7 @@ class Submission(Base):
     """
     __tablename__ = "submissions"
     SubmissionID: Column("sub_id", Integer, primary_key=True, index=True)
-    CohortID: Column("cohort_id", Integer, nullable=True)
+    ChildID: Column("child_id", ForeignKey("children.child_id"))
     StoryID: Column("story_id", Integer, unique=False, nullable=False)
     StoryLength: Column("story_length", Integer)
     AverageWordLength: Column("avg_word_len", Float)

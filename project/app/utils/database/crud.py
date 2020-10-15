@@ -30,7 +30,7 @@ def create_submission(db: Session, mold: schemas.Submission):
 
 
 def get_submissions_by_cohort(db: Session, cohort_id: int, limit: int = 1000):
-    """Function that querys the `submissions` table for entries that match a
+    """Function that queries the `submissions` table for entries that match a
     specific cohort_id
     Arugments:
     ---
@@ -91,3 +91,8 @@ def get_all_submissions(db: Session, limit: int = 1000):
     else:
         q = db.query(models.Submission).limit(limit).all()
     return q
+
+
+# on grade all of the squad scores for week number
+# and the most recent submission for story id
+# student's scores over time
